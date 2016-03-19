@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!-- RICARDO GUILHERME COELHO BARROS S1314084-->
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		>
+
+
+
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	>
+
+
+
+
+
+		<TextView
+			android:layout_gravity="right"
+			android:text="S1314084"
+			android:textColor="#ff0000"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+
+			/>
+
+		<DatePicker
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="10dp"
+			android:id="@+id/datePicker" />
+
+
+
+
+		<Button
+			android:layout_width="300dp"
+			android:layout_height="wrap_content"
+			android:text="Search RoadWorks"
+			android:id="@+id/searchButton"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginBottom="5dp"
+
+			android:textColor="#587591"
+			android:textSize="20dp"
+			android:padding="5dp"
+
+			/>
+
+	</LinearLayout>
+</ScrollView>
