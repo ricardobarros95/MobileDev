@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- RICARDO GUILHERME COELHO BARROS S1314084-->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.me.myandroidstuff.activities.RoadWorksActivity"
+    android:orientation="vertical">
+    
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:background="#FF0288D1"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/datePicker"
-            />
+            android:spinnersShown="false"
+            android:calendarViewShown="true"
+            android:layout_gravity="center"
+            >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search Roadworks"
-            android:id="@+id/button"
-            />
 
+
+        </DatePicker>
+
+
+    </ScrollView>
 
 
 
     </LinearLayout>
-</ScrollView><!-- From: file:/C:/Users/Barros/TrafficListingTestProject/app/src/main/res/layout/activity_road_works.xml -->
+
+
+<!-- From: file:/C:/Users/Barros/TrafficListingTestProject/app/src/main/res/layout/activity_road_works.xml -->

@@ -46,7 +46,7 @@ public class PlannedRoadworksActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planned_roadworks);
         textView = (TextView)findViewById(R.id.textView);
-        new DownloadData().execute();
+        new DownloadData(urlString).execute();
 
         final Intent intent = new Intent(PlannedRoadworksActivity.this, DisplayResultActivity.class);
         final Bundle bundle = new Bundle();
@@ -139,6 +139,13 @@ public class PlannedRoadworksActivity extends Activity {
 
     private class DownloadData extends AsyncTask<String, Void, String>{
 
+        String roadWorksString;
+
+        public DownloadData(String url)
+        {
+            roadWorksString = url;
+        }
+
         @Override
         protected String doInBackground(String... params){
             String result = "";
@@ -148,7 +155,7 @@ public class PlannedRoadworksActivity extends Activity {
 
             try{
 
-                url = new URL(urlString);
+                url = new URL(roadWorksString);
             }
             catch(MalformedURLException e ){
                 e.printStackTrace();

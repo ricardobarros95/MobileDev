@@ -224,7 +224,7 @@ public class TrafficListingTestProject extends Activity
     	
     } // End of sourceListingString
 
-    public static List Parse(InputStream inputStream) throws XmlPullParserException, IOException
+    public static ArrayList Parse(InputStream inputStream) throws XmlPullParserException, IOException
     {
         try
         {
@@ -245,9 +245,9 @@ public class TrafficListingTestProject extends Activity
         }
     }
 
-	private static List ReadFeed(XmlPullParser parser) throws XmlPullParserException, IOException
+	private static ArrayList ReadFeed(XmlPullParser parser) throws XmlPullParserException, IOException
 	{
-		List entries = new ArrayList();
+		ArrayList entries = new ArrayList();
 
 		parser.require(XmlPullParser.START_TAG, ns, "channel");
 		while (parser.next() != XmlPullParser.END_TAG)

@@ -1,12 +1,12 @@
 package org.me.myandroidstuff.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -32,7 +32,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoadWorksActivity extends Activity {
+public class RoadWorksActivity extends ActionBarActivity {
 
     String urlString = "http://trafficscotland.org/rss/feeds/roadworks.aspx";
     TextView textView;
@@ -46,7 +46,7 @@ public class RoadWorksActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_road_works);
         textView = (TextView)findViewById(R.id.textView);
-        new DownloadData().execute();
+        new DownloadData(urlString).execute();
 
         final Intent intent = new Intent(RoadWorksActivity.this, DisplayResultActivity.class);
         final Bundle bundle = new Bundle();
@@ -133,6 +133,13 @@ public class RoadWorksActivity extends Activity {
 
     private class DownloadData extends AsyncTask<String, Void, String>{
 
+        String worksURL;
+
+        public DownloadData(String url)
+        {
+            worksURL = url;
+        }
+
         @Override
         protected String doInBackground(String... params){
             String result = "";
@@ -142,7 +149,7 @@ public class RoadWorksActivity extends Activity {
 
             try{
 
-                url = new URL(urlString);
+                url = new URL(worksURL);
             }
             catch(MalformedURLException e ){
                 e.printStackTrace();
