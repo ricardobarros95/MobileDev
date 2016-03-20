@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,10 +27,16 @@ public class DisplayResultActivity extends Activity {
         setContentView(R.layout.activity_display_result);
         final Item item = (Item)getIntent().getParcelableExtra("item");
 
-        TextView titleTV = (TextView)findViewById(R.id.Title);
+        TextView titleTV = (TextView)findViewById(R.id.roadworksTitle);
         titleTV.setText(item.title);
 
-        TextView descriptionTV = (TextView)findViewById(R.id.Description);
+        TextView startDateTV = (TextView)findViewById(R.id.startDate);
+        startDateTV.setText(item.formatedStartDate.toString());
+
+        TextView endDateTV = (TextView)findViewById(R.id.endDate);
+        endDateTV.setText(item.endDate.toString());
+
+        TextView descriptionTV = (TextView)findViewById(R.id.description);
         String description = "";
         String sep = System.lineSeparator();
         for(int i = 0; i < item.descriptionInfo.size(); i++)
@@ -39,7 +46,7 @@ public class DisplayResultActivity extends Activity {
         }
         descriptionTV.setText(description);
 
-        Button btn = (Button)findViewById(R.id.linkButton);
+        Button btn = (Button)findViewById(R.id.okButton);
 
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)

@@ -5,8 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * RICARDO GUILHERME COELHO BARROS
@@ -20,6 +25,8 @@ public class Item implements Parcelable
     public List<String> descriptionInfo = new ArrayList<String>(); // 0 = Start Date, 1 = End Date, 2+ = Delay Information
     public String[] date = new String[3]; // 0 = weekday, 1 = day, 2 = month, 3 = year
     public String startDate;
+    public Date endDate;
+    public Date formatedStartDate;
     public enum Month{
         JANUARY, FEBRUARY, MARCH, APRIL,
         MAY, JUNE, JULY, AUGUST, SEPTEMBER,
@@ -42,6 +49,26 @@ public class Item implements Parcelable
         date[0] = date[0].trim();
         this.date = date;
 
+        String theStartDate = descriptionInfo.get(0).replaceAll("Start Date:", " ");
+        theStartDate = theStartDate.replaceAll("- 00:00", " ");
+        theStartDate = theStartDate.trim();
+        DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyy", Locale.UK);
+        Date formatedStartDate = null;
+
+        String theEndDate = descriptionInfo.get(1).replaceAll("End Date:", " ");
+        theEndDate = theEndDate.replaceAll("- 00:00", " ");
+        theEndDate = theEndDate.trim();
+
+
+        try {
+            formatedStartDate = dateFormat.parse(theStartDate);
+            this.formatedStartDate = formatedStartDate;
+            formatedStartDate = dateFormat.parse(theEndDate);
+            this.endDate = formatedStartDate;
+        }
+        catch(ParseException e){
+            e.printStackTrace();
+        }
 
         if(date[2].equals("January")) month = Month.JANUARY;
         else if(date[2].equals("February")) month = Month.FEBRUARY;
@@ -72,6 +99,8 @@ public class Item implements Parcelable
             item.link = source.readString();
             source.readStringList(item.descriptionInfo);
             item.startDate = source.readString();
+            item.endDate = (Date)source.readSerializable();
+            item.formatedStartDate = (Date)source.readSerializable();
             return item;
         }
 
@@ -92,6 +121,12 @@ public class Item implements Parcelable
         parcel.writeString(link);
         parcel.writeStringList(descriptionInfo);
         parcel.writeString(startDate);
+        parcel.writeSerializable(this.endDate);
+        parcel.writeSerializable(this.formatedStartDate);
     }
 
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

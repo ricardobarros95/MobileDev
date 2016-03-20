@@ -33,27 +33,27 @@ public class HomeActivity extends AppCompatActivity {
 
     public ArrayList<Item> roadWorksParsedList;
     public List<Item> plannedWorksParsedList;
-
+    final Bundle bundle = new Bundle();
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        roadWorksParsedList = new ArrayList<Item>();
+       // roadWorksParsedList = new ArrayList<Item>();
 
-        new DownloadData(roadWorksString, roadWorksParsedList).execute();
-        new DownloadData(plannedWorksString, plannedWorksParsedList).execute();
+       // new DownloadData(roadWorksString, roadWorksParsedList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+      //  new DownloadData(plannedWorksString, plannedWorksParsedList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
 
         Button b = (Button) findViewById(R.id.okButton);
-        final Intent intent = new Intent(HomeActivity.this, TabsActivity.class);
-        final Bundle bundle = new Bundle();
+        intent = new Intent(HomeActivity.this, TabsActivity.class);
+
 
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                bundle.putParcelableArrayList("roadWorksParsedList", roadWorksParsedList);
-                intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });
@@ -72,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+            //Process.setThreadPritiory()
             String result = "";
             InputStream anInStream = null;
             int response = -1;
@@ -135,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
                 try {
                     if(worksURL.equals(roadWorksString)){
                         roadWorksParsedList = TrafficListingTestProject.Parse(stream);
+
                     }
                     else if(worksURL.equals(plannedWorksString)) {
                         plannedWorksParsedList = TrafficListingTestProject.Parse(stream);

@@ -174,7 +174,7 @@ public class TrafficListingTestProject extends Activity
 
 
     // Method to handle the reading of the data from the XML stream
-    private static String sourceListingString(String urlString)throws IOException
+    public static String sourceListingString(String urlString)throws IOException
     {
 	 	String result = "";
     	InputStream anInStream = null;
@@ -362,9 +362,9 @@ public class TrafficListingTestProject extends Activity
         return result;
     }
 
-    public static List DisplayList(String startDate, List<Item> parsedList)
+    public static ArrayList DisplayList(String startDate, List<Item> parsedList)
     {
-        List<Item> list = new ArrayList<Item>();
+        ArrayList<Item> list = new ArrayList<Item>();
         for(int i = 0; i<parsedList.size(); i++)
         {
             if(parsedList.get(i).startDate.trim().equals(startDate))
