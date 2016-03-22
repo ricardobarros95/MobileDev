@@ -1,6 +1,7 @@
 package org.me.myandroidstuff;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 public class CustomAdapter extends ArrayAdapter<Item> {
 
+
     public CustomAdapter(Context context, List<Item> itemList){
         super(context, R.layout.custom_item, itemList);
     }
@@ -29,8 +31,20 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         TextView roadWorksTitle = (TextView) customView.findViewById(R.id.roadworksTitle);
         ImageView imageView = (ImageView) customView.findViewById(R.id.colorRepres);
 
+        if(item.duration < 7) {
+            imageView.setImageResource(R.drawable.greenroadworksign);
+        }
+
+        else if(item.duration >=7 && item.duration <= 14){
+            imageView.setImageResource(R.drawable.ywlloeroadworksign);
+        }
+
+        else if(item.duration > 15){
+            imageView.setImageResource(R.drawable.roadworksign);
+        }
+
         roadWorksTitle.setText(item.title);
-        imageView.setImageResource(R.drawable.roadworksign);
+
         return customView;
     }
 }

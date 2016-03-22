@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#132228"/>
+        android:background="#132228" />
+
 
     <TabHost
         android:layout_width="match_parent"
@@ -41,12 +44,20 @@
 
                     <DatePicker
                         android:id="@+id/roadWorksDatePicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
                         android:spinnersShown="false"
                         android:calendarViewShown="true"
                         android:layout_gravity="center"
                         />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar"
+                        android:layout_gravity="center_horizontal"
+                        android:indeterminateOnly="false" />
 
                     <Button
                         android:id="@+id/searchRoadWorks"
@@ -57,11 +68,14 @@
                         android:layout_marginTop="30dp"
                         />
 
-                    <ListView
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/listView"
-                        android:layout_gravity="center_horizontal" />
+                        android:text=""
+                        android:textSize="20dp"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:id="@+id/noRoadworks"/>
 
                 </LinearLayout>
 
@@ -71,10 +85,33 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <DatePicker
+                        android:id="@+id/plannedWorksDatePicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:spinnersShown="false"
+                        android:calendarViewShown="true"
+                        android:layout_gravity="center"
+                        />
+
                     <Button
+                        android:id="@+id/searchPlannedWorks"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="bew button"/>
+                        android:text="Search Roadworks"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="20dp"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:id="@+id/noPlannedRoadworks"/>
+
+
 
                 </LinearLayout>
 
@@ -82,4 +119,11 @@
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ricardo Barros S1314084"
+        android:textColor="#ffffffff"
+        android:layout_gravity="end"/>
 </LinearLayout>

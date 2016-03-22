@@ -82,7 +82,7 @@
     <color name="primary_dark_material_light">#ff757575</color>
     <!-- From: file:/C:/Users/Barros/TrafficListingTestProject/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="primary_material_dark">#03a9f4</color>
+    <color name="primary_material_dark">#31c4ff</color>
     <color name="primary_material_dark_1">#2196f3</color>
     <!-- From: file:/C:/Users/Barros/TrafficListingTestProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/values/values.xml -->
     <eat-comment/>

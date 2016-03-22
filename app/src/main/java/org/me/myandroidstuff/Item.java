@@ -24,9 +24,10 @@ public class Item implements Parcelable
     public String link;
     public List<String> descriptionInfo = new ArrayList<String>(); // 0 = Start Date, 1 = End Date, 2+ = Delay Information
     public String[] date = new String[3]; // 0 = weekday, 1 = day, 2 = month, 3 = year
-    public String startDate;
+    public String startDateString;
     public Date endDate;
-    public Date formatedStartDate;
+    public Date startDate;
+    public long duration;
     public enum Month{
         JANUARY, FEBRUARY, MARCH, APRIL,
         MAY, JUNE, JULY, AUGUST, SEPTEMBER,
@@ -37,7 +38,7 @@ public class Item implements Parcelable
     public Item(String title, String description, String link, List<String> descriptionInfo, String[] date)
     {
         this.title = title;
-        this.description = description;
+       // this.description = description;
         this.link = link;
         this.descriptionInfo = descriptionInfo;
         String s;
@@ -49,11 +50,17 @@ public class Item implements Parcelable
         date[0] = date[0].trim();
         this.date = date;
 
+        String actualDescription = description.replaceAll("Start Date:", " ");
+        actualDescription = actualDescription.replaceAll("End Date:", " ");
+        actualDescription = actualDescription.replaceAll("- 00:00", " ");
+        actualDescription = actualDescription.trim();
+        this.description = actualDescription;
+
         String theStartDate = descriptionInfo.get(0).replaceAll("Start Date:", " ");
         theStartDate = theStartDate.replaceAll("- 00:00", " ");
         theStartDate = theStartDate.trim();
         DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyy", Locale.UK);
-        Date formatedStartDate = null;
+        Date formatedDate = null;
 
         String theEndDate = descriptionInfo.get(1).replaceAll("End Date:", " ");
         theEndDate = theEndDate.replaceAll("- 00:00", " ");
@@ -61,10 +68,10 @@ public class Item implements Parcelable
 
 
         try {
-            formatedStartDate = dateFormat.parse(theStartDate);
-            this.formatedStartDate = formatedStartDate;
-            formatedStartDate = dateFormat.parse(theEndDate);
-            this.endDate = formatedStartDate;
+            formatedDate = dateFormat.parse(theStartDate);
+            this.startDate = formatedDate;
+            formatedDate = dateFormat.parse(theEndDate);
+            this.endDate = formatedDate;
         }
         catch(ParseException e){
             e.printStackTrace();
@@ -83,7 +90,13 @@ public class Item implements Parcelable
         else if(date[2].equals("December")) month = Month.DECEMBER;
         else month = null;
 
-        this.startDate = date[1] + " " + month.ordinal() + " " + date[3];
+        this.startDateString = date[1] + " " + month.ordinal() + " " + date[3];
+
+        long diffMs = endDate.getTime() - startDate.getTime();
+        long days = diffMs / (1000 * 60 * 60 * 24);
+        Log.d("testing the duration", days + "");
+        this.duration = days;
+
     }
 
     public Item()
@@ -98,9 +111,10 @@ public class Item implements Parcelable
             item.description = source.readString();
             item.link = source.readString();
             source.readStringList(item.descriptionInfo);
-            item.startDate = source.readString();
+            item.startDateString = source.readString();
             item.endDate = (Date)source.readSerializable();
-            item.formatedStartDate = (Date)source.readSerializable();
+            item.startDate = (Date)source.readSerializable();
+            item.duration = source.readLong();
             return item;
         }
 
@@ -120,9 +134,10 @@ public class Item implements Parcelable
         parcel.writeString(description);
         parcel.writeString(link);
         parcel.writeStringList(descriptionInfo);
-        parcel.writeString(startDate);
+        parcel.writeString(startDateString);
         parcel.writeSerializable(this.endDate);
-        parcel.writeSerializable(this.formatedStartDate);
+        parcel.writeSerializable(this.startDate);
+        parcel.writeLong(duration);
     }
 
     @Override

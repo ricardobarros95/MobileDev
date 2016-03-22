@@ -367,7 +367,7 @@ public class TrafficListingTestProject extends Activity
         ArrayList<Item> list = new ArrayList<Item>();
         for(int i = 0; i<parsedList.size(); i++)
         {
-            if(parsedList.get(i).startDate.trim().equals(startDate))
+            if(parsedList.get(i).startDateString.trim().equals(startDate))
             {
                 list.add(parsedList.get(i));
             }
