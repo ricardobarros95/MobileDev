@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/MaterialTheme" >
         <activity
-            android:name=".activities.ChooseWorksActivity"
+            android:name=".activities.TabsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,9 +29,11 @@
         </activity>
         <activity android:name=".TrafficListingTestProject" >
         </activity>
-        <activity android:name=".activities.PlannedRoadworksActivity" >
+        <activity android:name=".activities.HomeActivity" >
         </activity>
-        <activity android:name=".activities.RoadWorksActivity" >
+        <activity android:name=".activities.DisplayListActivity" >
+        </activity>
+        <activity android:name=".activities.AmbientModeActivity" >
         </activity>
     </application>
 

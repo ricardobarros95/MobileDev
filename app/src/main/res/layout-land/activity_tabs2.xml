@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RICARDO GUILHERME COELHO BARROS S1314084-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#132228" />
+
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabHost"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3f606e">
+
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <DatePicker
+                        android:id="@+id/roadWorksDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnersShown="false"
+                        android:calendarViewShown="false"
+                        style="@android:style/Widget.DatePicker"
+                        android:padding="20dp"
+                        />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar"
+                        android:layout_gravity="center_horizontal"
+                        android:indeterminateOnly="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="20dp"
+                        android:layout_gravity="bottom"
+                        android:padding="10dp"
+                        android:id="@+id/noRoadworks"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="22dp" />
+
+                    <Button
+                        android:id="@+id/searchRoadWorks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Search Roadworks"
+
+                        android:layout_marginTop="54dp"
+                        android:layout_below="@+id/progressBar"
+                        android:layout_toEndOf="@+id/roadWorksDatePicker"
+                        android:layout_marginStart="17dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <DatePicker
+                        android:id="@+id/plannedWorksDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:spinnersShown="false"
+                        android:calendarViewShown="false"
+                        style="@android:style/Widget.DatePicker"
+                        android:padding="20dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="20dp"
+                        android:layout_gravity="bottom"
+                        android:padding="10dp"
+                        android:id="@+id/noPlannedRoadworks"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="22dp" />
+
+                    <Button
+                        android:id="@+id/searchPlannedWorks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Search Roadworks"
+
+                        android:layout_marginTop="54dp"
+                        android:layout_toEndOf="@+id/plannedWorksDatePicker"
+                        android:layout_marginStart="17dp" />
+
+                </RelativeLayout>
+
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ricardo Barros S1314084"
+        android:textColor="#ffffffff"
+        android:layout_gravity="end"/>
+</LinearLayout>
