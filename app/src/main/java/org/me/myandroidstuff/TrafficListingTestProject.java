@@ -49,35 +49,29 @@ public class TrafficListingTestProject extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Log.d("testing", "hello?");
         // Get the TextView object on which to display the results
         buttonList = new ArrayList<Button>();
         final Intent intent = new Intent(TrafficListingTestProject.this, DisplayResultActivity.class);
         final Bundle bundle = new Bundle();
-        Log.d("testing", "hello1?");
         String result;
         String sourceListingURL = "http://trafficscotland.org/rss/feeds/roadworks.aspx";
 
         try
         {
-            Log.d("testing", "hello2?");
         	// Get the data from the XML stream as a string
         	result =  sourceListingString(sourceListingURL);
             InputStream stream = new ByteArrayInputStream(result.getBytes("UTF-8"));
             try
             {
                 parsedList = Parse(stream);
-                Log.d("testing", "hello3?");
             }
             catch(XmlPullParserException e)
             {
                 Log.w("myApp", e.toString());
             }
-            Log.d("testing", "hello4?");
             final LinearLayout lL = (LinearLayout)findViewById(R.id.linearLayout);
             final DatePicker dp = (DatePicker) findViewById(R.id.datePicker);
             Button b = (Button) findViewById(R.id.searchButton);
-            Log.d("testing", b.getId() + "");
             b.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v)
                 {
@@ -85,7 +79,6 @@ public class TrafficListingTestProject extends Activity
                     {
                         lL.removeView(b);
                     }
-                    Log.d("testing", "Search button clicked");
                     buttonList.clear();
                     lL.removeView(noRoadWorks);
 
@@ -99,7 +92,6 @@ public class TrafficListingTestProject extends Activity
                     String date = dayResult + " " + dp.getMonth() + " " + dp.getYear();
 
                     final List<Item> displayList = DisplayList(date, parsedList);
-                    Log.d("Testing", displayList.size() + "");
                     if(!displayList.isEmpty())
                     {
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

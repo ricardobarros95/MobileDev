@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Barros on 3/20/2016.
+ * RICARDO GUILHERME COELHO BARROS
+ * S1314084
  */
 public class CustomAdapter extends ArrayAdapter<Item> {
-
 
     public CustomAdapter(Context context, List<Item> itemList){
         super(context, R.layout.custom_item, itemList);
@@ -31,6 +31,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         TextView roadWorksTitle = (TextView) customView.findViewById(R.id.roadworksTitle);
         ImageView imageView = (ImageView) customView.findViewById(R.id.colorRepres);
 
+        //Assign a different image based on the duration
         if(item.duration < 7) {
             imageView.setImageResource(R.drawable.greenroadworksign);
         }

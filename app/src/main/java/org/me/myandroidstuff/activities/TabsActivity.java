@@ -27,6 +27,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RICARDO GUILHERME COELHO BARROS
+ * S1314084
+ */
+
 public class TabsActivity extends Activity {
 
     ArrayList<Item> roadWorksParsedList;
@@ -34,13 +39,10 @@ public class TabsActivity extends Activity {
     String roadWorksURL = "http://trafficscotland.org/rss/feeds/roadworks.aspx";
     String plannedWorksURL = "http://trafficscotland.org/rss/feeds/plannedroadworks.aspx";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs2);
-        final Context context = this;
 
         final Intent listIntent = new Intent(TabsActivity.this, DisplayListActivity.class);
 
@@ -68,7 +70,6 @@ public class TabsActivity extends Activity {
             }
         });
         thread.start();
-
 
 
         //Get planned roadworks in another thread
@@ -112,8 +113,8 @@ public class TabsActivity extends Activity {
         final DatePicker roadWorksDatePicker = (DatePicker) findViewById(R.id.roadWorksDatePicker);
         Button searchButton = (Button) findViewById(R.id.searchRoadWorks);
 
-        final TextView noRoadworksText = (TextView)findViewById(R.id.noRoadworks);
-        final TextView noPlannedworksText = (TextView)findViewById(R.id.noPlannedRoadworks);
+        final TextView noRoadworksText = (TextView) findViewById(R.id.noRoadworks);
+        final TextView noPlannedworksText = (TextView) findViewById(R.id.noPlannedRoadworks);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -135,7 +136,7 @@ public class TabsActivity extends Activity {
         });
 
         final DatePicker plannedWorksDatePicker = (DatePicker) findViewById(R.id.plannedWorksDatePicker);
-        Button plannedSearchButton = (Button)findViewById(R.id.searchPlannedWorks);
+        Button plannedSearchButton = (Button) findViewById(R.id.searchPlannedWorks);
 
         plannedSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -147,10 +148,10 @@ public class TabsActivity extends Activity {
                 String date = dayResult + " " + plannedWorksDatePicker.getMonth() + " " + plannedWorksDatePicker.getYear();
 
                 final ArrayList<Item> displayList = TrafficListingTestProject.DisplayList(date, plannedWorksParsedList);
-                if(displayList.size() > 0) {
+                if (displayList.size() > 0) {
                     listIntent.putExtra("displayList", displayList);
                     startActivity(listIntent);
-                }else{
+                } else {
                     noPlannedworksText.setText("No Roadworks available!");
                 }
 

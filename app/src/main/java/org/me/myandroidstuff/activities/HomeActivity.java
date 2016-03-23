@@ -26,26 +26,19 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RICARDO GUILHERME COELHO BARROS
+ * S1314084
+ */
+
 public class HomeActivity extends AppCompatActivity {
 
-    String roadWorksString = "http://trafficscotland.org/rss/feeds/roadworks.aspx";
-    String plannedWorksString = "http://trafficscotland.org/rss/feeds/plannedroadworks.aspx";
-
-    public ArrayList<Item> roadWorksParsedList;
-    public List<Item> plannedWorksParsedList;
-    final Bundle bundle = new Bundle();
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-       // roadWorksParsedList = new ArrayList<Item>();
-
-       // new DownloadData(roadWorksString, roadWorksParsedList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-      //  new DownloadData(plannedWorksString, plannedWorksParsedList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
 
         Button b = (Button) findViewById(R.id.okButton);
         intent = new Intent(HomeActivity.this, TabsActivity.class);
@@ -60,95 +53,4 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private class DownloadData extends AsyncTask<String, Void, String> {
-
-        String worksURL;
-        List<Item> worksParsedList;
-
-        public DownloadData(String url, List<Item> parsedList) {
-            worksURL = url;
-            worksParsedList = parsedList;
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            //Process.setThreadPritiory()
-            String result = "";
-            InputStream anInStream = null;
-            int response = -1;
-            URL url = null;
-
-            try {
-
-                url = new URL(worksURL);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            URLConnection conn = null;
-            try {
-                conn = url.openConnection();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                // Check that the connection can be opened
-                if (!(conn instanceof HttpURLConnection))
-                    throw new IOException("Not an HTTP connection");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                // Open connection
-                HttpURLConnection httpConn = (HttpURLConnection) conn;
-                httpConn.setAllowUserInteraction(false);
-                httpConn.setInstanceFollowRedirects(true);
-                httpConn.setRequestMethod("GET");
-                httpConn.connect();
-                response = httpConn.getResponseCode();
-                // Check that connection is Ok
-                if (response == HttpURLConnection.HTTP_OK) {
-                    // Connection is Ok so open a reader
-                    anInStream = httpConn.getInputStream();
-                    InputStreamReader in = new InputStreamReader(anInStream);
-                    BufferedReader bin = new BufferedReader(in);
-
-                    // Read in the data from the RSS stream
-                    String line = new String();
-                    // Read past the RSS headers
-                    bin.readLine();
-                    bin.readLine();
-                    // Keep reading until there is no more data
-                    while (((line = bin.readLine())) != null) {
-                        result = result + "\n" + line;
-                    }
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-            // Return result as a string for further processing
-            return result;
-        }
-
-        protected void onPostExecute(String result) {
-            try {
-                InputStream stream = new ByteArrayInputStream(result.getBytes("UTF-8"));
-                try {
-                    if(worksURL.equals(roadWorksString)){
-                        roadWorksParsedList = TrafficListingTestProject.Parse(stream);
-
-                    }
-                    else if(worksURL.equals(plannedWorksString)) {
-                        plannedWorksParsedList = TrafficListingTestProject.Parse(stream);
-                    }
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
 }

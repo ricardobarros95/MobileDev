@@ -17,8 +17,7 @@ import java.util.Locale;
  * RICARDO GUILHERME COELHO BARROS
  * S1314084
  */
-public class Item implements Parcelable
-{
+public class Item implements Parcelable {
     public String title;
     public String description;
     public String link;
@@ -28,17 +27,18 @@ public class Item implements Parcelable
     public Date endDate;
     public Date startDate;
     public long duration;
-    public enum Month{
+
+    public enum Month {
         JANUARY, FEBRUARY, MARCH, APRIL,
         MAY, JUNE, JULY, AUGUST, SEPTEMBER,
         OCTOBER, NOVEMBER, DECEMBER
     }
+
     public Month month;
 
-    public Item(String title, String description, String link, List<String> descriptionInfo, String[] date)
-    {
+    public Item(String title, String description, String link, List<String> descriptionInfo, String[] date) {
         this.title = title;
-       // this.description = description;
+        // this.description = description;
         this.link = link;
         this.descriptionInfo = descriptionInfo;
         String s;
@@ -72,22 +72,21 @@ public class Item implements Parcelable
             this.startDate = formatedDate;
             formatedDate = dateFormat.parse(theEndDate);
             this.endDate = formatedDate;
-        }
-        catch(ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        if(date[2].equals("January")) month = Month.JANUARY;
-        else if(date[2].equals("February")) month = Month.FEBRUARY;
-        else if(date[2].equals("March")) month = Month.MARCH;
-        else if(date[2].equals("April")) month = Month.APRIL;
-        else if(date[2].equals("May"))month = Month.MAY;
-        else if(date[2].equals("June")) month = Month.JUNE;
-        else if(date[2].equals("July")) month = Month.JULY;
-        else if(date[2].equals("August")) month = Month.AUGUST;
-        else if(date[2].equals("October")) month = Month.OCTOBER;
-        else if(date[2].equals("November")) month = Month.NOVEMBER;
-        else if(date[2].equals("December")) month = Month.DECEMBER;
+        if (date[2].equals("January")) month = Month.JANUARY;
+        else if (date[2].equals("February")) month = Month.FEBRUARY;
+        else if (date[2].equals("March")) month = Month.MARCH;
+        else if (date[2].equals("April")) month = Month.APRIL;
+        else if (date[2].equals("May")) month = Month.MAY;
+        else if (date[2].equals("June")) month = Month.JUNE;
+        else if (date[2].equals("July")) month = Month.JULY;
+        else if (date[2].equals("August")) month = Month.AUGUST;
+        else if (date[2].equals("October")) month = Month.OCTOBER;
+        else if (date[2].equals("November")) month = Month.NOVEMBER;
+        else if (date[2].equals("December")) month = Month.DECEMBER;
         else month = null;
 
         this.startDateString = date[1] + " " + month.ordinal() + " " + date[3];
@@ -99,8 +98,7 @@ public class Item implements Parcelable
 
     }
 
-    public Item()
-    {
+    public Item() {
 
     }
 
@@ -112,8 +110,8 @@ public class Item implements Parcelable
             item.link = source.readString();
             source.readStringList(item.descriptionInfo);
             item.startDateString = source.readString();
-            item.endDate = (Date)source.readSerializable();
-            item.startDate = (Date)source.readSerializable();
+            item.endDate = (Date) source.readSerializable();
+            item.startDate = (Date) source.readSerializable();
             item.duration = source.readLong();
             return item;
         }
@@ -123,13 +121,11 @@ public class Item implements Parcelable
         }
     };
 
-    public int describeContents()
-    {
+    public int describeContents() {
         return 0;
     }
 
-    public void writeToParcel(Parcel parcel, int flags)
-    {
+    public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeString(title);
         parcel.writeString(description);
         parcel.writeString(link);

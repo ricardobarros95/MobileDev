@@ -17,33 +17,37 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * RICARDO GUILHERME COELHO BARROS
+ * S1314084
+ */
+
 public class AmbientModeActivity extends Activity {
 
     AnimationDrawable workerAnimation;
-    int speed = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambient_mode);
 
-        Switch switchButton = (Switch)findViewById(R.id.switch1);
+        Switch switchButton = (Switch) findViewById(R.id.switch1);
         switchButton.setChecked(true);
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(!isChecked){
+                if (!isChecked) {
                     finish();
                 }
             }
         });
 
         Bundle bundle = getIntent().getExtras();
-        ArrayList<Item> displayList = (ArrayList<Item>)bundle.get("displayList");
+        ArrayList<Item> displayList = (ArrayList<Item>) bundle.get("displayList");
         ImageView workerImageView = (ImageView) findViewById(R.id.workerImageView);
 
-        if(displayList.size() <= 3)
+        if (displayList.size() <= 3)
             workerImageView.setBackgroundResource(R.drawable.animation);
-        else if(displayList.size() > 3 && displayList.size() <=6)
+        else if (displayList.size() > 3 && displayList.size() <= 6)
             workerImageView.setBackgroundResource(R.drawable.animation2);
         else
             workerImageView.setBackgroundResource(R.drawable.animation3);

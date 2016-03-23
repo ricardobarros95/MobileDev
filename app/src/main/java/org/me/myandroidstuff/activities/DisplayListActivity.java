@@ -17,6 +17,11 @@ import org.me.myandroidstuff.R;
 
 import java.util.ArrayList;
 
+/**
+ * RICARDO GUILHERME COELHO BARROS
+ * S1314084
+ */
+
 public class DisplayListActivity extends Activity {
 
     Switch switchButton;
@@ -27,18 +32,18 @@ public class DisplayListActivity extends Activity {
         setContentView(R.layout.activity_display_list);
 
         Bundle bundle = getIntent().getExtras();
-        final ArrayList<Item> displayList = (ArrayList<Item>)bundle.get("displayList");
+        final ArrayList<Item> displayList = (ArrayList<Item>) bundle.get("displayList");
         final Intent displayIntent = new Intent(DisplayListActivity.this, DisplayResultActivity.class);
-        final Bundle displaybundle = new Bundle();
+        final Bundle displayBundle = new Bundle();
         final Intent ambientModeIntent = new Intent(DisplayListActivity.this, AmbientModeActivity.class);
 
 
-        switchButton = (Switch)findViewById(R.id.switch1);
+        switchButton = (Switch) findViewById(R.id.switch1);
         switchButton.setChecked(false);
 
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     ambientModeIntent.putExtra("displayList", displayList);
                     startActivity(ambientModeIntent);
                 }
@@ -46,21 +51,21 @@ public class DisplayListActivity extends Activity {
         });
 
         ListAdapter adapter = new CustomAdapter(this, displayList);
-        ListView listView = (ListView)findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Item item = (Item) parent.getItemAtPosition(position);
-                displaybundle.putParcelable("item", item);
-                displayIntent.putExtras(displaybundle);
+                displayBundle.putParcelable("item", item);
+                displayIntent.putExtras(displayBundle);
                 startActivity(displayIntent);
             }
         });
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         switchButton.setChecked(false);
     }

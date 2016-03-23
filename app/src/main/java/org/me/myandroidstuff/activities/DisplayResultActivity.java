@@ -19,33 +19,31 @@ import org.me.myandroidstuff.R;
 
 public class DisplayResultActivity extends Activity {
 
-    Intent intent = getIntent();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_result);
-        final Item item = (Item)getIntent().getParcelableExtra("item");
+        final Item item = (Item) getIntent().getParcelableExtra("item");
 
-        TextView descriptionText = (TextView)findViewById(R.id.textView5);
+        TextView descriptionText = (TextView) findViewById(R.id.textView5);
 
-        TextView titleTV = (TextView)findViewById(R.id.roadworksTitle);
+        TextView titleTV = (TextView) findViewById(R.id.roadworksTitle);
         titleTV.setText(item.title);
 
-        TextView startDateTV = (TextView)findViewById(R.id.startDate);
+        TextView startDateTV = (TextView) findViewById(R.id.startDate);
         startDateTV.setText(item.startDate.toString());
 
-        TextView endDateTV = (TextView)findViewById(R.id.endDate);
+        TextView endDateTV = (TextView) findViewById(R.id.endDate);
         endDateTV.setText(item.endDate.toString());
 
-        TextView descriptionTV = (TextView)findViewById(R.id.description);
+        TextView descriptionTV = (TextView) findViewById(R.id.description);
         String description = "";
 
-        for(int i = 2; i < item.descriptionInfo.size(); i++){
-            if(item.descriptionInfo.get(i) != null)
+        for (int i = 2; i < item.descriptionInfo.size(); i++) {
+            if (item.descriptionInfo.get(i) != null)
                 description += " " + item.descriptionInfo.get(i);
         }
-        if(description.equals(""))
+        if (description.equals(""))
             descriptionText.setText("");
 
         description = description.replaceAll("Start Date:", " ");
@@ -54,13 +52,11 @@ public class DisplayResultActivity extends Activity {
         description = description.replaceAll("\n", " ");
         description = description.trim();
         descriptionTV.setText(description);
-        Log.d("tesinting", description);
 
-        Button btn = (Button)findViewById(R.id.okButton);
+        Button btn = (Button) findViewById(R.id.okButton);
 
-        btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v)
-            {
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Uri url = Uri.parse(item.link);
                 Intent intent = new Intent(Intent.ACTION_VIEW, url);
                 startActivity(intent);
