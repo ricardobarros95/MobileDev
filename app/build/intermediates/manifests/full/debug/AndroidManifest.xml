@@ -6,8 +6,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/MaterialTheme" >
         <activity
-            android:name="org.me.myandroidstuff.activities.ChooseWorksActivity"
+            android:name="org.me.myandroidstuff.activities.TabsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +31,11 @@
         </activity>
         <activity android:name="org.me.myandroidstuff.TrafficListingTestProject" >
         </activity>
-        <activity android:name="org.me.myandroidstuff.activities.PlannedRoadworksActivity" >
+        <activity android:name="org.me.myandroidstuff.activities.HomeActivity" >
         </activity>
-        <activity android:name="org.me.myandroidstuff.activities.RoadWorksActivity" >
+        <activity android:name="org.me.myandroidstuff.activities.DisplayListActivity" >
+        </activity>
+        <activity android:name="org.me.myandroidstuff.activities.AmbientModeActivity" >
         </activity>
     </application>
 

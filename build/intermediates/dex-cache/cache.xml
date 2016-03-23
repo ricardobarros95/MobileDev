@@ -2,32 +2,53 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-21ba32b7e9b64fcbebad98691483a2b30592adaa.jar" />
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-23633b9ff13c1056b218444e06dc7b6c6c8880a9.jar" />
     </item>
     <item
-        jar="C:\Users\Barros\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-52e47de7db9bddb11e62a8e8b4169391a9988d34.jar" />
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-b2ed6b56859a1be6c86192149c592e8303ed9862.jar" />
     </item>
     <item
-        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v13\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-e3b57898b3fe5c549dc68eceeb56d559b6a3a6da.jar" />
+        sha1="c4caf832116bca1f2e140bf1fb600e2edd190837">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-3a7ada138bbfb821aaee0903fccafdb605122f6c.jar" />
     </item>
     <item
-        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-cc54175a3e53ba4f88ae770c6a86d50720fc7378.jar" />
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\classes-fee21512e6b014dd83eba03210d0c68e9db360b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Barros\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-f4479d9f5fec6c8d293e99f42b50501b880b097f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-9e8887fc67464990a6bfbcfc0bdc391bfbd6d18a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\exploded-aar\com.android.support\support-v13\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6fc4c7067459e8d69e1bbcb3a8973cdd84d5d87b">
+        <dex dex="C:\Users\Barros\TrafficListingTestProject\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-ff911e1bc3d48a4b6bcff8b3eab6f0084902b93f.jar" />
     </item>
 
 </items>
